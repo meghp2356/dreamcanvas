@@ -1,7 +1,7 @@
 "use client";
 import { useParams } from "next/navigation";
 import { useEffect } from "react";
-import TldrawEditor from "@/components/editor/tldrawEditor";
+import TldrawEditor from "@/components/editor/TldrawEditor";
 import joinWhiteboard from "@/actions/joinWhiteboard"; // <- Import the action
 
 export default function Page() {
