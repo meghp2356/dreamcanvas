@@ -13,19 +13,29 @@ export default async function createWhiteboard(data: WhiteBoardData) {
   const { name, project } = data;
   const { userId } = await auth();
 
-  if (!userId) throw new Error("unauthorized");
+  if (!userId) throw new Error("Unauthorized");
 
-  const board = await prisma.whiteboard.findFirst({
-    where: { name, userId },
-    select: { id: true },
+  // Ensure user exists in DB
+  await prisma.user.upsert({
+    where: { id: userId },
+    update: {},
+    create: { id: userId },
   });
-
-  if (board) throw new Error("project exits");
 
   try {
     return await prisma.whiteboard.create({
-      data: { name: name.trim(), userId, data: project },
-      select: { id: true, name: true, createdAt: true },
+      data: {
+        name: name.trim(),
+        data: project,
+        users: {
+          connect: { id: userId }, // link the creator to the board
+        },
+      },
+      select: {
+        id: true,
+        name: true,
+        createdAt: true,
+      },
     });
   } catch (e: any) {
     if (e.code === "P2002") {

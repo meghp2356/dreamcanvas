@@ -20,7 +20,7 @@ export default function HomePage() {
             </span>
           </div>
           <span className="text-sm text-gray-400">
-            Visualize. Plan. Create.
+            Visualize. Plan. Create. Together.
           </span>
         </div>
         <div className="flex items-center gap-6">
@@ -60,7 +60,7 @@ export default function HomePage() {
                   route.push("/dashboard");
                 }}
               >
-                DashBoard
+                Dashboard
               </button>
             ) : (
               <button
@@ -87,20 +87,25 @@ export default function HomePage() {
               transition={{ duration: 0.6 }}
               className="text-4xl sm:text-5xl font-bold leading-tight"
             >
-              Capture your ideas, craft your vision.
+              Collaborate, create, and capture your vision.
               <br />
               <span className="text-indigo-400">Dreamboard</span> makes it real.
             </motion.h1>
             <p className="mt-6 text-lg text-gray-300 max-w-prose">
-              A hybrid canvas and note workspace to brainstorm, sketch, and keep
-              every spark of inspiration organized — all in one dark, elegant
-              interface.
+              A shared canvas with built-in notes — brainstorm, sketch, and
+              bring ideas to life together, all in one elegant workspace.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <button className="px-6 py-3 rounded-full bg-indigo-500 hover:bg-indigo-400 font-semibold shadow-lg transition">
+              <button
+                className="px-6 py-3 rounded-full bg-indigo-500 hover:bg-indigo-400 font-semibold shadow-lg transition"
+                onClick={() => route.push("/dashboard")}
+              >
                 Start Dreaming (Free)
               </button>
-              <button className="px-6 py-3 rounded-full border border-gray-600 hover:border-indigo-400 transition text-sm">
+              <button
+                className="px-6 py-3 rounded-full border border-gray-600 hover:border-indigo-400 transition text-sm"
+                onClick={() => route.push("/demo")}
+              >
                 See Demo
               </button>
             </div>
@@ -114,8 +119,7 @@ export default function HomePage() {
                   <div className="h-2 w-24 bg-indigo-500 rounded-full" />
                   <div className="h-4 bg-gray-700 rounded w-3/4" />
                   <div className="h-40 bg-slate-800 rounded-lg flex items-center justify-center text-sm text-gray-400">
-                    {/* placeholder for app screenshot */}
-                    Dreamboard Canvas + Notes Preview
+                    Live Collaboration + Notes Preview
                   </div>
                   <div className="flex gap-3">
                     <div className="flex-1 h-3 bg-gray-700 rounded" />
@@ -124,22 +128,7 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-            {/* subtle glow */}
-            <div className="pointer-events-none absolute inset-0 blur-3xl mix-blend-overlay" />
           </div>
-        </div>
-        {/* Decorative wave */}
-        <div className="mt-10">
-          <svg
-            viewBox="0 0 1440 80"
-            className="w-full block"
-            preserveAspectRatio="none"
-          >
-            <path
-              fill="rgba(15,23,42,0.8)"
-              d="M0,32L48,48C96,64,192,96,288,101.3C384,107,480,85,576,74.7C672,64,768,64,864,74.7C960,85,1056,107,1152,106.7C1248,107,1344,85,1392,74.7L1440,64L1440,80L1392,80C1344,80,1248,80,1152,80C1056,80,960,80,864,80C768,80,672,80,576,80C480,80,384,80,288,80C192,80,96,80,48,80L0,80Z"
-            ></path>
-          </svg>
         </div>
       </header>
 
@@ -148,21 +137,21 @@ export default function HomePage() {
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold">Why Dreamboard?</h2>
           <p className="mt-3 text-gray-300 max-w-2xl mx-auto">
-            Merge visual thinking and notes seamlessly. Designed for creators,
-            planners, and dreamers who want focus without clutter.
+            Work together in real time on a shared canvas with built-in notes.
+            Perfect for teams, creators, and anyone turning ideas into action.
           </p>
         </div>
 
         <div className="grid gap-8 grid-cols-1 md:grid-cols-3">
           <FeatureCard
-            title="Infinite Canvas"
-            desc="Sketch, drag, and organize ideas with no boundaries. Your thoughts flow freely."
-            emoji="🖼️"
+            title="Collaborative Canvas"
+            desc="Invite teammates to draw, plan, and organize on the same infinite canvas — together, in real time."
+            emoji="🤝"
           />
           <FeatureCard
-            title="Quick Notes"
-            desc="Jot down insights, to-dos, and reminders beside your visuals without losing context."
-            emoji="✍️"
+            title="Integrated Notes"
+            desc="Keep context where it matters. Attach notes directly to items on your board so ideas and details stay linked."
+            emoji="📝"
           />
           <FeatureCard
             title="Dark Mode First"
@@ -176,7 +165,7 @@ export default function HomePage() {
       <section className="bg-slate-800/60 py-16">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-12">
-            <h2 className="text-2xl font-bold">How it works</h2>
+            <h2 className="text-2xl font-bold">How collaboration works</h2>
             <p className="mt-2 text-gray-300">
               Get started in three simple steps.
             </p>
@@ -184,18 +173,18 @@ export default function HomePage() {
           <div className="grid gap-10 grid-cols-1 md:grid-cols-3">
             <StepCard
               step="1"
-              title="Create a Dreamboard"
-              desc="Open your canvas and start sketching ideas visually. No constraints."
+              title="Create or Join a Board"
+              desc="Open a collaborative canvas or jump into an existing one to start sketching ideas instantly."
             />
             <StepCard
               step="2"
-              title="Add Context"
-              desc="Attach notes, thoughts, and todos to parts of your board. Keep everything linked."
+              title="Invite & Collaborate Live"
+              desc="Share the link and work together in real time — multiple cursors, edits, and updates, no refresh needed."
             />
             <StepCard
               step="3"
-              title="Refine & Share"
-              desc="Edit seamlessly, organize, and export or collaborate whenever you're ready."
+              title="Add Notes & Context"
+              desc="Attach notes anywhere on the canvas to capture decisions, todos, and next steps right beside the work."
             />
           </div>
         </div>
@@ -211,17 +200,23 @@ export default function HomePage() {
         >
           <div className="bg-slate-900 rounded-3xl px-10 py-8 shadow-xl">
             <h3 className="text-2xl font-bold mb-2">
-              Ready to build your dreams?
+              Ready to build together?
             </h3>
             <p className="text-gray-300 mb-6">
-              Sign up now and keep all your ideas in one fluid space.
+              Sign up now and collaborate in real time on your next big idea.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-7 py-3 rounded-full bg-indigo-500 hover:bg-indigo-400 font-semibold transition">
+              <button
+                className="px-7 py-3 rounded-full bg-indigo-500 hover:bg-indigo-400 font-semibold transition"
+                onClick={() => route.push("/dashboard")}
+              >
                 Get Started Free
               </button>
-              <button className="px-7 py-3 rounded-full border border-gray-600 hover:border-indigo-400 transition">
-                Learn More
+              <button
+                className="px-7 py-3 rounded-full border border-gray-600 hover:border-indigo-400 transition"
+                onClick={() => route.push("/demo")}
+              >
+                See Demo
               </button>
             </div>
           </div>
@@ -237,44 +232,20 @@ export default function HomePage() {
               The place where ideas breathe. Visual & written in harmony.
             </p>
           </div>
-          <div>
+        <div>
             <div className="font-semibold mb-2">Product</div>
             <ul className="space-y-1 text-sm text-gray-300">
-              <li>
-                <a href="#" className="hover:text-indigo-300">
-                  Features
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-indigo-300">
-                  Pricing
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-indigo-300">
-                  Docs
-                </a>
-              </li>
+              <li><a href="#" className="hover:text-indigo-300">Features</a></li>
+              <li><a href="#" className="hover:text-indigo-300">Pricing</a></li>
+              <li><a href="#" className="hover:text-indigo-300">Docs</a></li>
             </ul>
           </div>
           <div>
             <div className="font-semibold mb-2">Community</div>
             <ul className="space-y-1 text-sm text-gray-300">
-              <li>
-                <a href="#" className="hover:text-indigo-300">
-                  Discord
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-indigo-300">
-                  Twitter
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-indigo-300">
-                  Blog
-                </a>
-              </li>
+              <li><a href="#" className="hover:text-indigo-300">Discord</a></li>
+              <li><a href="#" className="hover:text-indigo-300">Twitter</a></li>
+              <li><a href="#" className="hover:text-indigo-300">Blog</a></li>
             </ul>
           </div>
         </div>

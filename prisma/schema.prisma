@@ -14,16 +14,18 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// schema.prisma
-model Whiteboard {
-  id        String   @id @default(cuid())
-  name      String
-  data      Json     // Store canvas data (from Tldraw/Excalidraw)
-  userId    String   // Clerk user ID
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@index([userId])
-  @@unique([userId, name])
+model User {
+  id          String      @id 
+  whiteboards Whiteboard[]
 }
 
+model Whiteboard {
+  id        String    @id @default(cuid())
+  name      String
+  data      Json
+  users     User[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@unique([name])
+}
