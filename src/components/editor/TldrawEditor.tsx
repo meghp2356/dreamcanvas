@@ -25,11 +25,9 @@ export default function TldrawEditor({ roomId  }: { roomId : string }) {
 
 
   return (
-    <div className="w-full h-[60vh] md:h-[calc(100vh-1rem)] border-2 border-gray-700 rounded-3xl overflow-hidden bg-neutral-900 shadow-inner">
-      <Tldraw
-        // snapshot={snapShot}
-        store={store}
-      />
-    </div>
+    <div className="w-screen h-screen border-2 border-gray-700 rounded-none overflow-hidden bg-neutral-900">
+  <Tldraw store={store} />
+</div>
+
   );
 }

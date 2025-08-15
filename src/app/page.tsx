@@ -12,67 +12,48 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-gray-900 to-zinc-800 text-white font-sans">
       {/* Navigation */}
-      <nav className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+      <nav className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between flex-wrap gap-4">
         <div className="flex items-center gap-3">
           <div className="text-2xl font-extrabold tracking-tight">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">
               Dreamboard
             </span>
           </div>
-          <span className="text-sm text-gray-400">
+          <span className="text-sm text-gray-400 hidden sm:inline">
             Visualize. Plan. Create. Together.
           </span>
         </div>
-        <div className="flex items-center gap-6">
-          <a href="#" className="text-sm hover:text-indigo-300 transition">
-            Features
-          </a>
-          <a href="#" className="text-sm hover:text-indigo-300 transition">
-            Pricing
-          </a>
-          <a href="#" className="text-sm hover:text-indigo-300 transition">
-            FAQ
-          </a>
-          <div className="flex gap-3">
-            {user?.id ? (
-              <button
-                className="text-sm px-4 py-2 rounded-full border border-indigo-500 hover:bg-indigo-500/20 transition"
-                onClick={() => {
-                  signOut();
-                }}
-              >
-                Log Out
-              </button>
-            ) : (
-              <button
-                className="text-sm px-4 py-2 rounded-full border border-indigo-500 hover:bg-indigo-500/20 transition"
-                onClick={() => {
-                  openSignIn({ signInUrl: "/dashboard" });
-                }}
-              >
-                Log in
-              </button>
-            )}
-            {user?.id ? (
-              <button
-                className="text-sm px-5 py-2 rounded-full bg-indigo-500 hover:bg-indigo-400 font-semibold transition"
-                onClick={() => {
-                  route.push("/dashboard");
-                }}
-              >
-                Dashboard
-              </button>
-            ) : (
-              <button
-                className="text-sm px-5 py-2 rounded-full bg-indigo-500 hover:bg-indigo-400 font-semibold transition"
-                onClick={() => {
-                  openSignUp({ signInFallbackRedirectUrl: "/dashboard" });
-                }}
-              >
-                Get Started
-              </button>
-            )}
-          </div>
+        <div className="flex items-center gap-3 flex-wrap">
+          {user?.id ? (
+            <button
+              className="text-sm px-4 py-2 rounded-full border border-indigo-500 hover:bg-indigo-500/20 transition"
+              onClick={() => signOut()}
+            >
+              Log Out
+            </button>
+          ) : (
+            <button
+              className="text-sm px-4 py-2 rounded-full border border-indigo-500 hover:bg-indigo-500/20 transition"
+              onClick={() => openSignIn({ signInUrl: "/dashboard" })}
+            >
+              Log in
+            </button>
+          )}
+          {user?.id ? (
+            <button
+              className="text-sm px-5 py-2 rounded-full bg-indigo-500 hover:bg-indigo-400 font-semibold transition"
+              onClick={() => route.push("/dashboard")}
+            >
+              Dashboard
+            </button>
+          ) : (
+            <button
+              className="text-sm px-5 py-2 rounded-full bg-indigo-500 hover:bg-indigo-400 font-semibold transition"
+              onClick={() => openSignUp({ signInFallbackRedirectUrl: "/dashboard" })}
+            >
+              Get Started
+            </button>
+          )}
         </div>
       </nav>
 
@@ -80,7 +61,7 @@ export default function HomePage() {
       <header className="relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 py-16 flex flex-col-reverse lg:flex-row gap-12 items-center">
           {/* Text */}
-          <div className="flex-1">
+          <div className="flex-1 text-center lg:text-left">
             <motion.h1
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -91,11 +72,11 @@ export default function HomePage() {
               <br />
               <span className="text-indigo-400">Dreamboard</span> makes it real.
             </motion.h1>
-            <p className="mt-6 text-lg text-gray-300 max-w-prose">
+            <p className="mt-6 text-lg text-gray-300 max-w-prose mx-auto lg:mx-0">
               A shared canvas with built-in notes — brainstorm, sketch, and
               bring ideas to life together, all in one elegant workspace.
             </p>
-            <div className="mt-8 flex flex-col sm:flex-row gap-4">
+            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <button
                 className="px-6 py-3 rounded-full bg-indigo-500 hover:bg-indigo-400 font-semibold shadow-lg transition"
                 onClick={() => route.push("/dashboard")}
@@ -112,13 +93,13 @@ export default function HomePage() {
           </div>
 
           {/* Illustration / mockup */}
-          <div className="flex-1 relative">
+          <div className="flex-1 relative w-full max-w-md sm:max-w-lg lg:max-w-none">
             <div className="rounded-3xl overflow-hidden shadow-2xl border border-gray-700 bg-gradient-to-br from-neutral-800 to-slate-800">
               <div className="p-6">
                 <div className="bg-neutral-900 rounded-xl p-4 flex flex-col gap-4">
                   <div className="h-2 w-24 bg-indigo-500 rounded-full" />
                   <div className="h-4 bg-gray-700 rounded w-3/4" />
-                  <div className="h-40 bg-slate-800 rounded-lg flex items-center justify-center text-sm text-gray-400">
+                  <div className="h-40 bg-slate-800 rounded-lg flex items-center justify-center text-sm text-gray-400 text-center px-2">
                     Live Collaboration + Notes Preview
                   </div>
                   <div className="flex gap-3">
@@ -131,35 +112,6 @@ export default function HomePage() {
           </div>
         </div>
       </header>
-
-      {/* Features */}
-      <section className="max-w-7xl mx-auto px-6 py-16">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold">Why Dreamboard?</h2>
-          <p className="mt-3 text-gray-300 max-w-2xl mx-auto">
-            Work together in real time on a shared canvas with built-in notes.
-            Perfect for teams, creators, and anyone turning ideas into action.
-          </p>
-        </div>
-
-        <div className="grid gap-8 grid-cols-1 md:grid-cols-3">
-          <FeatureCard
-            title="Collaborative Canvas"
-            desc="Invite teammates to draw, plan, and organize on the same infinite canvas — together, in real time."
-            emoji="🤝"
-          />
-          <FeatureCard
-            title="Integrated Notes"
-            desc="Keep context where it matters. Attach notes directly to items on your board so ideas and details stay linked."
-            emoji="📝"
-          />
-          <FeatureCard
-            title="Dark Mode First"
-            desc="Gentle on eyes, bold in contrast. Designed for late-night creators and thinkers."
-            emoji="🌙"
-          />
-        </div>
-      </section>
 
       {/* How it works */}
       <section className="bg-slate-800/60 py-16">
@@ -225,18 +177,16 @@ export default function HomePage() {
 
       {/* Footer */}
       <footer className="bg-gradient-to-t from-black via-slate-900 to-transparent pt-12 pb-8">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left">
           <div>
             <div className="text-xl font-bold mb-2">Dreamboard</div>
             <p className="text-gray-400">
               The place where ideas breathe. Visual & written in harmony.
             </p>
           </div>
-        <div>
+          <div>
             <div className="font-semibold mb-2">Product</div>
             <ul className="space-y-1 text-sm text-gray-300">
-              <li><a href="#" className="hover:text-indigo-300">Features</a></li>
-              <li><a href="#" className="hover:text-indigo-300">Pricing</a></li>
               <li><a href="#" className="hover:text-indigo-300">Docs</a></li>
             </ul>
           </div>
@@ -253,27 +203,6 @@ export default function HomePage() {
           © {new Date().getFullYear()} Dreamboard. All rights reserved.
         </div>
       </footer>
-    </div>
-  );
-}
-
-function FeatureCard({
-  title,
-  desc,
-  emoji,
-}: {
-  title: string;
-  desc: string;
-  emoji: string;
-}) {
-  return (
-    <div className="bg-gradient-to-br from-neutral-800 to-slate-800 border border-slate-700 rounded-2xl p-6 flex flex-col gap-4 shadow-md hover:shadow-lg transition">
-      <div className="text-3xl">{emoji}</div>
-      <h3 className="text-xl font-semibold">{title}</h3>
-      <p className="text-gray-300 flex-grow">{desc}</p>
-      <div>
-        <span className="text-indigo-400 font-medium">Learn more →</span>
-      </div>
     </div>
   );
 }
