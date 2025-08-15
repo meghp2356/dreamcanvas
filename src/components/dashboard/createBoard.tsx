@@ -29,7 +29,7 @@ export default function DashboardPage() {
     async function loadBoards() {
 
       if (user?.id) {
-        await createUser(user.id);
+        await createUser();
       }
       const data = await getALlBoard();
       const mappedBoards: Board[] =
@@ -50,7 +50,7 @@ export default function DashboardPage() {
   useEffect(() => {
     if (!selectedBoardId || !user?.id) return;
     async function loadUsers() {
-      const res = await getAllUsers(user.id);
+      const res = await getAllUsers(user!.id);
       const members: Member[] = res.users.map((u: any) => ({
         name: u.id,
         avatarInitial: u.id[0]?.toUpperCase(),
