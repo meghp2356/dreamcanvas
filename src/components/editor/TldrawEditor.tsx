@@ -12,7 +12,7 @@ export default function TldrawEditor({ roomId  }: { roomId : string }) {
 
   console.log("room:", roomId);
 
-  const uri = `ws://127.0.0.1:8787/ws?roomId=${encodeURIComponent(roomId)}&sessionid=${encodeURIComponent(user!.id)}`;
+  const uri = `ws://my-app.meghp7676.workers.dev/ws?roomId=${encodeURIComponent(roomId)}&sessionid=${encodeURIComponent(user!.id)}`;
 
   const store = useSync({
     uri, // or your DO route
